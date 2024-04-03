@@ -1,11 +1,8 @@
-**Log on to codeastro.com for more projects!***
-
 **Database Name: realestatephp**
 
-**Developed by Suraj Kumar Vishwakarma**
+**Developed by csci314 best group**
 
-**Recommended PHP Version 5.6, 7.4**
-
+**Use latest php thx lmao**
 
 **Admin Login Details**
 
