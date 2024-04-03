@@ -7,6 +7,6 @@
 **Admin Login Details**
 
 Username: admin
-Password: codeastro.com
+Password: csci314.com
 
 
