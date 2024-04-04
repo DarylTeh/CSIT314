@@ -4,7 +4,7 @@
                     <div class="row">
                         <div class="col-md-8">
                             <ul class="top-contact list-text-white  d-table">
-                                <li><a href="#"><i class="fas fa-phone-alt text-success mr-1"></i>+1 243-765-4321</a></li>
+                                <li><a href="#"><i class="fas fa-phone-alt text-success mr-1"></i>+65 999</a></li>
                                 <li><a href="#"><i class="fas fa-envelope text-success mr-1"></i>csci314@realestate.com</a></li>
                             </ul>
                         </div>

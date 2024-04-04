@@ -118,7 +118,7 @@ if(isset($_POST['send']))
                                     <div class="contact-address">
                                         <h5 class="text-white">Call Us</h5>
                                         <span class="d-table text-white">+65 999</span>
-										<span class="text-white">+1 243-765-4321 </span>
+										<span class="text-white">+65 999 </span>
 									</div>
                                 </li>
                                 <li class="d-flex mb-4"> <i class="fas fa-envelope text-white mr-2 font-13 mt-1"></i>
