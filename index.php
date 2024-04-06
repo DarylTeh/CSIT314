@@ -265,7 +265,7 @@ include("config.php");
                             <div class="bg-success text-white rounded-circle position-absolute z-index-9">1</div>
                             <div class="left-arrow"><i class="flaticon-investor flat-medium icon-success" aria-hidden="true"></i></div>
                             <h5 class="text-secondary mt-5 mb-4">Discussion</h5>
-                            <p>Nascetur cubilia sociosqu aliquet ut elit nascetur nullam duis tincidunt nisl non quisque vestibulum platea ornare ridiculus.</p>
+                            <p>Uh this is some text just ignore lmao HEHEHEHA Uh this is some text just ignore lmao HEHEHEHA .</p>
                         </div>
                     </div>
                     <div class="col-md-4">
@@ -273,7 +273,7 @@ include("config.php");
                             <div class="bg-success text-white rounded-circle position-absolute z-index-9">2</div>
                             <div class="left-arrow"><i class="flaticon-search flat-medium icon-success" aria-hidden="true"></i></div>
                             <h5 class="text-secondary mt-5 mb-4">Files Review</h5>
-                            <p>Nascetur cubilia sociosqu aliquet ut elit nascetur nullam duis tincidunt nisl non quisque vestibulum platea ornare ridiculus.</p>
+                            <p>Uh this is some text just ignore lmao HEHEHEHA Uh this is some text just ignore lmao HEHEHEHA .</p>
                         </div>
                     </div>
                     <div class="col-md-4">
@@ -281,7 +281,7 @@ include("config.php");
                             <div class="bg-success text-white rounded-circle position-absolute z-index-9">3</div>
                             <div><i class="flaticon-handshake flat-medium icon-success" aria-hidden="true"></i></div>
                             <h5 class="text-secondary mt-5 mb-4">Acquire</h5>
-                            <p>Nascetur cubilia sociosqu aliquet ut elit nascetur nullam duis tincidunt nisl non quisque vestibulum platea ornare ridiculus.</p>
+                            <p>Uh this is some text just ignore lmao HEHEHEHA Uh this is some text just ignore lmao HEHEHEHA .</p>
                         </div>
                     </div>
                 </div>
