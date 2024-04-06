@@ -98,12 +98,12 @@ if(isset($_POST['add']))
 <link rel="shortcut icon" href="images/favicon.ico">
 
 <!--	Fonts
-	========================================================-->
+	-->
 <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,500,600,700&amp;display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Comfortaa:400,700" rel="stylesheet">
 
 <!--	Css Link
-	========================================================-->
+	-->
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="css/bootstrap-slider.css">
 <link rel="stylesheet" type="text/css" href="css/jquery-ui.css">
@@ -116,7 +116,7 @@ if(isset($_POST['add']))
 <link rel="stylesheet" type="text/css" href="css/login.css">
 <!-- remember to comment because its "good practice" -->
 <!--	Title
-	=========================================================-->
+	=-->
 <title>Real Estate PHP</title>
 </head>
 <body>
@@ -489,7 +489,7 @@ if(isset($_POST['add']))
 <!-- Wrapper End --> 
 <!-- remember to comment because its "good practice" -->
 <!--	Js Link
-============================================================--> 
+====--> 
 <script src="js/jquery.min.js"></script> 
 <script src="js/tinymce/tinymce.min.js"></script>
 <script src="js/tinymce/init-tinymce.min.js"></script>

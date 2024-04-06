@@ -121,7 +121,7 @@ include("config.php");
 <!-- Wrapper End --> 
 
 <!--	Js Link
-============================================================--> 
+====--> 
 <script src="js/jquery.min.js"></script> 
 <!--jQuery Layer Slider --> 
 <script src="js/greensock.js"></script> 
