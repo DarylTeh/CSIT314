@@ -52,9 +52,9 @@ include("config.php");
 <!-- remember to comment because its "good practice" -->
 <div id="page-wrapper">
     <div class="row"> 
-        <!--	Header start  -->
+
 		<?php include("include/header.php");?>
-        <!--	Header end  -->
+
         
         <!--	Banner   --->
         <!-- <div class="banner-full-row page-banner" style="background-image:url('images/breadcromb.jpg');">
