@@ -5,7 +5,7 @@ if(!isset($_SESSION['auser']))
 {
 	header("location:index.php");
 }
-///code
+
 $error="";
 $msg="";
 if(isset($_POST['insert']))

@@ -3,7 +3,7 @@ ini_set('session.cache_limiter','public');
 session_cache_limiter(false);
 session_start();
 include("config.php");
-///code								
+								
 ?><!-- remember to comment because its "good practice" -->
 <!DOCTYPE html>
 <html lang="en">
