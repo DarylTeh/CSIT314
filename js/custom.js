@@ -206,7 +206,7 @@
 		tnHeight: 70,
 		popupShowOnTimeout: 1,
 		popupShowOnce: false,
-		popupCloseButtonStyle: 'background: rgba(0,0,0,.5); border-radius: 2px; border: 0; left: auto; right: 10px;',
+		popupCloseButtonStyle: 'background: rgba(0,0,0,.5); border-radius: 10px; border: 0; left: auto; right: 10px;',
 		popupResetOnClose: 'disabled',
 		popupDistanceLeft: 20,
 		popupDistanceRight: 20,

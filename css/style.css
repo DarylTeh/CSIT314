@@ -842,7 +842,7 @@ button:focus {
 .btn {
   padding: 0px 23px;
   font-size: 14px;
-  border-radius: 0;
+  border-radius: 10px;
   line-height: 46px;
   font-weight: 500;
 }
@@ -1150,7 +1150,7 @@ blockquote {
   padding: 12px 15px;
   margin-right: 2px;
   font-size: 15px;
-  border-radius: 3px;
+  border-radius: 10px;
   font-weight: 500;
 }
 .hover-border-white-nav .navbar-nav .nav-link {
@@ -1234,7 +1234,7 @@ blockquote {
 .jslider .jslider-pointer {
   width: 18px;
   height: 18px;
-  border-radius: 3px;
+  border-radius: 10px;
   background-position: 0 -60px;
   position: absolute;
   left: 20%;
@@ -1283,10 +1283,10 @@ blockquote {
   left: 20%;
   background: transparent;
   line-height: 13px;
-  -moz-border-radius: 2px;
-  -webkit-border-radius: 2px;
-  -o-border-radius: 2px;
-  border-radius: 2px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -o-border-radius: 10px;
+  border-radius: 10px;
 }
 .jslider .jslider-value-to {
   margin-right: -18px;
@@ -1353,7 +1353,7 @@ blockquote {
   left: -30px;
   width: 25px;
   height: 25px;
-  border-radius: 2px;
+  border-radius: 10px;
   text-align: center;
   color: #fff;
   line-height: 23px;
@@ -1584,10 +1584,10 @@ blockquote {
 }
 .subscribe button.btn {
   padding: 0px 25px;
-  border-radius: 0px 3px 3px 0px;
+  border-radius: 10px;
 }
 .subscribe .form-control {
-  border-radius: 3px 0px 0px 3px;
+  border-radius: 10px 0px 0px 3px;
 }
 .fileupload-label {
   background: rgba(144, 201, 35, 0.05);
@@ -1784,7 +1784,7 @@ blockquote {
 }
 .featured-thumb .sale {
   padding: 5px 15px;
-  border-radius: 8px;
+  border-radius: 10px;
   z-index: 99;
   position: absolute;
   top: 15px;
@@ -2077,7 +2077,7 @@ sup {
 .dashboard-panel .success {
   border-left: 5px solid;
   border-left-color: #67c339;
-  border-radius: 0;
+  border-radius: 10px;
 }
 .dashboard-panel .success.alert {
   border-left-color: #f46868;
@@ -2406,7 +2406,7 @@ Register page
   background-color: var(--theme-primary-color);
   right: 0;
   top: 0;
-  border-radius: 0 30px 30px 0;
+  border-radius: 10px 30px 30px 0;
 }
 .radius-30,
 .bg-shape::before,
@@ -2904,7 +2904,7 @@ Register page
     padding: 12px 15px;
     margin-right: 2px;
     font-size: 15px;
-    border-radius: 3px;
+    border-radius: 10px;
   }
   .navbar-light .navbar-nav .nav-item {
     margin-bottom: 3px;

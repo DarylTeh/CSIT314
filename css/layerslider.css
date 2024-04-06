@@ -531,7 +531,7 @@
 		.ls-slidebar-slider {
 			width: 20px;
 			height: 20px;
-			border-radius: 20px;
+			border-radius: 10px;
 			background-color: #999;
 		}
 
@@ -560,7 +560,7 @@
 		.ls-slidebar-light .ls-slidebar-slider {
 			width: 18px;
 			height: 18px;
-			border-radius: 20px;
+			border-radius: 10px;
 			background-color: #eee;
 			border: 1px solid #bbb;
 			border-top: 1px solid #ccc;
@@ -1059,7 +1059,7 @@
 		background: none !important;
 		min-width: 0 !important;
 		max-width: none !important;
-		border-radius: 0;
+		border-radius: 10px;
 		box-shadow: none;
 		border: 0;
 		padding: 0;
