@@ -7,7 +7,7 @@
                                 <div class="col-md-12 col-lg-4">
                                     <div class="footer-widget mb-4">
                                         <div class="footer-logo mb-4"> <a href="#"><img class="logo-bottom" src="images/logo/restatelg_white.png" alt="image"></a> </div>
-                                        <p class="pb-20 text-white">Uh this is some text just ignore lmao HEHEHEHA HEHEHEHA images from https://www.zillow.com/</p>
+                                        <p class="pb-20 text-white">CSIT314 best module ever! CSIT314 best module ever! CSIT314 best module ever! CSIT314 best module ever! Images from https://www.zillow.com/</p>
 										
                                         </div>
                                 </div>

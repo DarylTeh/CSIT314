@@ -226,21 +226,21 @@ include("config.php");
 									<i class="flaticon-reward flat-medium float-left d-table mr-4 text-success" aria-hidden="true"></i>
 									<div class="pl-2">
 										<h5 class="mb-3">Top Rated</h5>
-										<p>This is a dummy text for filling out spaces. This is just a dummy text for filling out blank spaces.</p>
+										<p>CSIT314 best module ever! CSIT314 best module ever! CSIT314 best module ever! CSIT314 best module ever! </p>
 									</div>
                                 </li>
                                 <li class="mb-4 text-white d-flex"> 
 									<i class="flaticon-real-estate flat-medium float-left d-table mr-4 text-success" aria-hidden="true"></i>
 									<div class="pl-2">
 										<h5 class="mb-3">Experience Quality</h5>
-										<p>This is a dummy text for filling out spaces. This is just a dummy text for filling out blank spaces.</p>
+										<p>CSIT314 best module ever! CSIT314 best module ever! CSIT314 best module ever! CSIT314 best module ever! </p>
 									</div>
                                 </li>
                                 <li class="mb-4 text-white d-flex"> 
 									<i class="flaticon-seller flat-medium float-left d-table mr-4 text-success" aria-hidden="true"></i>
 									<div class="pl-2">
 										<h5 class="mb-3">Experienced Agents</h5>
-										<p>This is a dummy text for filling out spaces. This is just a dummy text for filling out blank spaces.</p>
+										<p>CSIT314 best module ever! CSIT314 best module ever! CSIT314 best module ever! CSIT314 best module ever! </p>
 									</div>
                                 </li>
                             </ul>
@@ -265,7 +265,7 @@ include("config.php");
                             <div class="bg-success text-white rounded-circle position-absolute z-index-9">1</div>
                             <div class="left-arrow"><i class="flaticon-investor flat-medium icon-success" aria-hidden="true"></i></div>
                             <h5 class="text-secondary mt-5 mb-4">Discussion</h5>
-                            <p>Uh this is some text just ignore lmao HEHEHEHA Uh this is some text just ignore lmao HEHEHEHA .</p>
+                            <p>CSIT314 best module ever! CSIT314 best module ever! CSIT314 best module ever! CSIT314 best module ever! </p>
                         </div>
                     </div>
                     <div class="col-md-4">
@@ -273,7 +273,7 @@ include("config.php");
                             <div class="bg-success text-white rounded-circle position-absolute z-index-9">2</div>
                             <div class="left-arrow"><i class="flaticon-search flat-medium icon-success" aria-hidden="true"></i></div>
                             <h5 class="text-secondary mt-5 mb-4">Files Review</h5>
-                            <p>Uh this is some text just ignore lmao HEHEHEHA Uh this is some text just ignore lmao HEHEHEHA .</p>
+                            <p>CSIT314 best module ever! CSIT314 best module ever! CSIT314 best module ever! CSIT314 best module ever! </p>
                         </div>
                     </div>
                     <div class="col-md-4">
@@ -281,7 +281,7 @@ include("config.php");
                             <div class="bg-success text-white rounded-circle position-absolute z-index-9">3</div>
                             <div><i class="flaticon-handshake flat-medium icon-success" aria-hidden="true"></i></div>
                             <h5 class="text-secondary mt-5 mb-4">Acquire</h5>
-                            <p>Uh this is some text just ignore lmao HEHEHEHA Uh this is some text just ignore lmao HEHEHEHA .</p>
+                            <p>CSIT314 best module ever! CSIT314 best module ever! CSIT314 best module ever! CSIT314 best module ever! </p>
                         </div>
                     </div>
                 </div>
