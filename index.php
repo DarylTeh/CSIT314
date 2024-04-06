@@ -43,13 +43,7 @@ include("config.php");
 <body>
 
 <!--	Page Loader  -->
-<!--<div class="page-loader position-fixed z-index-9999 w-100 bg-white vh-100">
-	<div class="d-flex justify-content-center y-middle position-relative">
-	  <div class="spinner-border" role="status">
-		<span class="sr-only">Loading...</span>
-	  </div>
-	</div>
-</div>  -->
+<!--  -->
 <!--	Page Loader  -->
 
 <div id="page-wrapper">
@@ -123,28 +117,28 @@ include("config.php");
                             <div class="p-4 text-center hover-bg-white hover-shadow rounded mb-4 transation-3s"> 
 								<i class="flaticon-rent text-success flat-medium" aria-hidden="true"></i>
                                 <h5 class="text-secondary hover-text-success py-3 m-0"><a href="#">Selling Service</a></h5>
-                                <p>This is a dummy text for filling out spaces. Just some random words...</p>
+                                <p>CSIT314 best module ever! CSIT314 best module ever! </p>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-6">
                             <div class="p-4 text-center hover-bg-white hover-shadow rounded mb-4 transation-3s"> 
 								<i class="flaticon-for-rent text-success flat-medium" aria-hidden="true"></i>
                                 <h5 class="text-secondary hover-text-success py-3 m-0"><a href="#">Rental Service</a></h5>
-                                <p>This is a dummy text for filling out spaces. Just some random words...</p>
+                                <p>CSIT314 best module ever! CSIT314 best module ever! </p>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-6">
                             <div class="p-4 text-center hover-bg-white hover-shadow rounded mb-4 transation-3s"> 
 								<i class="flaticon-list text-success flat-medium" aria-hidden="true"></i>
                                 <h5 class="text-secondary hover-text-success py-3 m-0"><a href="#">Property Listing</a></h5>
-                                <p>This is a dummy text for filling out spaces. Just some random words...</p>
+                                <p>CSIT314 best module ever! CSIT314 best module ever! </p>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-6">
                             <div class="p-4 text-center hover-bg-white hover-shadow rounded mb-4 transation-3s"> 
 								<i class="flaticon-diagram text-success flat-medium" aria-hidden="true"></i>
                                 <h5 class="text-secondary hover-text-success py-3 m-0"><a href="#">Legal Investment</a></h5>
-                                <p>This is a dummy text for filling out spaces. Just some random words...</p>
+                                <p>CSIT314 best module ever! CSIT314 best module ever! </p>
                             </div>
                         </div>
                     </div>

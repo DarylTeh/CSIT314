@@ -22,7 +22,7 @@ if(isset($_REQUEST['login']))
 				
 		   }
 		   else{
-			   $error = "<p class='alert alert-warning'>Email or Password doesnot match!</p> ";
+			   $error = "<p class='alert alert-warning'>Email or Password does not match!</p> ";
 		   }
 	}else{
 		$error = "<p class='alert alert-warning'>Please Fill all the fields</p>";
@@ -68,13 +68,7 @@ if(isset($_REQUEST['login']))
 
 <!--	Page Loader
 =============================================================
-<div class="page-loader position-fixed z-index-9999 w-100 bg-white vh-100">
-	<div class="d-flex justify-content-center y-middle position-relative">
-	  <div class="spinner-border" role="status">
-		<span class="sr-only">Loading...</span>
-	  </div>
-	</div>
-</div>
+
 --> 
 
 
@@ -113,15 +107,15 @@ if(isset($_REQUEST['login']))
                         <div class="login-right">
 							<div class="login-right-wrap">
 								<h1>Login</h1>
-								<p class="account-subtitle">Access to our dashboard</p>
+								<p class="account-subtitle">Email: The one in taiga, PW: Password1!</p>
 								<?php echo $error; ?><?php echo $msg; ?>
 								<!-- Form -->
 								<form method="post">
 									<div class="form-group">
-										<input type="email"  name="email" class="form-control" placeholder="Your Email*">
+										<input type="email"  name="email" class="form-control" placeholder="admin@gmail.com">
 									</div>
 									<div class="form-group">
-										<input type="password" name="pass"  class="form-control" placeholder="Your Password">
+										<input type="password" name="pass"  class="form-control" placeholder="Password1!">
 									</div>
 									
 										<button class="btn btn-success" name="login" value="Login" type="submit">Login</button>
