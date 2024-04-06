@@ -288,7 +288,7 @@ include("config.php");
             </div>
         </div>
         
-        <!--	How It Work -->
+
         
         <!--	Achievement
         ====-->

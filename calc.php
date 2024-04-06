@@ -93,7 +93,7 @@ if(isset($_REQUEST['calc']))
             <div class="container">
                     <div class="row mb-5">
 						<div class="col-lg-12">
-							<h2 class="text-secondary double-down-line text-center">EMI Calculator</h2>
+							<h2 class="text-secondary double-down-line text-center">Monthly Installment Calculator</h2>
                         </div>
 					</div>
 					<center>
@@ -109,7 +109,7 @@ if(isset($_REQUEST['calc']))
 						
                             <tr class="text-center font-18">
                                 <td><b>Amount</b></td>
-                                <td><b><?php echo '$'.$amount ; ?></b></td>
+                                <td><b><?php echo '$'. number_format($amount, 2) ; ?></b></td>
                             </tr>
 							<tr class="text-center">
                                 <td><b>Total Duration</b></td>
@@ -121,15 +121,15 @@ if(isset($_REQUEST['calc']))
                             </tr>
 							<tr class="text-center">
                                 <td><b>Total Interest</b></td>
-                                <td><b><?php echo '$'.$interest ; ?></b></td>
+                                <td><b><?php echo '$'. number_format($interest, 2) ; ?></b></td>
                             </tr>
 							<tr class="text-center">
                                 <td><b>Total Amount</b></td>
-                                <td><b><?php echo '$'.$pay ; ?></b></td>
+                                <td><b><?php echo '$'. number_format($pay, 2) ; ?></b></td>
                             </tr>
 							<tr class="text-center">
-                                <td><b>Pay Per Month (EMI)</b></td>
-                                <td><b><?php echo '$'.$month ; ?></b></td>
+                                <td><b>Monthly Payment</b></td>
+                                <td><b><?php echo '$' . number_format($month, 2); ?></b></td>
                             </tr>
 							
                         </tbody>
