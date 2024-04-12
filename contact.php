@@ -148,8 +148,7 @@ if (isset($_POST['send'])) {
 			<!--	Contact Inforamtion -->
 
 			<!--	Map -->
-			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6242949.078958849!2d122.13412445338423!3d40.17980318225165!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357e02dae64f4337%3A0x3a0b871c3e1d861c!2sNorth%20Korea!5e0!3m2!1sen!2ssg!4v1712418036407!5m2!1sen!2ssg" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> <!--	Map -->
-
+			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7728750.004697537!2d23.851301008939252!3d-18.94008046169894!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1931a4e706b17161%3A0xa1c0385fc5cbbfee!2sZimbabwe!5e0!3m2!1sen!2ssg!4v1712920237845!5m2!1sen!2ssg" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 			<!--	Footer   start-->
 			<?php include("include/footer.php"); ?>
 			<!--	Footer   start-->
