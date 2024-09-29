@@ -72,7 +72,7 @@ export default function SignUp() {
                         onChange={handleChange}
                       >
                         <option value="">Select Role</option>
-                        <option value="Real Estate Agent">Real Estate Agent</option>
+                        <option value="2nd hand car listing Agent">2nd hand car listing Agent</option>
                         <option value="Seller">Seller</option>
                         <option value="Buyer">Buyer</option>
                       </select>

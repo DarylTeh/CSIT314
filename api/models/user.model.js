@@ -21,7 +21,7 @@ const userSchema = new Schema({
   role: {
     type: String,
     required: true,
-    enum: ["Real Estate Agent", "Seller", "Buyer", "Admin"],
+    enum: ["2nd hand car listing Agent", "Seller", "Buyer", "Admin"],
     //default: "Buyer" //For now set Buyer as default for testing purpose 
     // TODO: add UI to select role.
   }
