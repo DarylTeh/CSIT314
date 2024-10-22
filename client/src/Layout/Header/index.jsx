@@ -21,7 +21,7 @@ export default function Header() {
           <div className='flex justify-between items-center text-md font-medium text-gray-600 '>
             <div className='flex items-center py-2'>
               <Link to='/' className='ml-3 hover:text-gray-500'>Home</Link>
-              <Link to='/properties' className='ml-3 hover:text-gray-500'>Properties</Link>
+              <Link to='/cars' className='ml-3 hover:text-gray-500'>Cars</Link>
             </div>
             {userInfo?.data ? (
               <>

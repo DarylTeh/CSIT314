@@ -15,7 +15,7 @@ const NotesApp = (props) => {
   const getAllNotes = async() => {
     console.log("GetAllNotes method executed.");
     try{
-      const res = await api.get(`/properties/notes/${props.propertyId}` 
+      const res = await api.get(`/cars/notes/${props.carId}` 
     );
       setNotes(res.data);
     } catch (error){
@@ -25,7 +25,7 @@ const NotesApp = (props) => {
 
   useEffect(() => {
     getAllNotes();
-  }, [props.propertyId]);
+  }, [props.carId]);
 
   const handleChange = (e) => {
     if(isEditing){
@@ -40,11 +40,11 @@ const NotesApp = (props) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    console.log("Current propertyId : "+props.propertyId);
+    console.log("Current carId : "+props.carId);
     console.log("Current note : "+note);
 
     const noteData = {
-      propertyId: props.propertyId,
+      carId: props.carId,
       description: note
     }
 
@@ -60,18 +60,18 @@ const NotesApp = (props) => {
 
           console.log("updatedNote description : "+updatedNote.description);
 
-          const res = await api.put(`properties/notes/${notes[currentIndex]._id}`, updatedNote);
+          const res = await api.put(`cars/notes/${notes[currentIndex]._id}`, updatedNote);
           // setNotes(updatedNotes);
           setIsEditing(false);
           setIsAdding(false);
           setCurrentIndex(null);
         } else {
           const newNote = {
-            propertyId: props.propertyId,
+            carId: props.carId,
             description: note
           }
           setNotes([...notes, newNote]);
-          const res = await api.post('properties/notes/add',
+          const res = await api.post('cars/notes/add',
             noteData 
             //TODO: For now comment out to bypass this headers
             // {
@@ -104,7 +104,7 @@ const NotesApp = (props) => {
 
   const handleDelete = async (index) => {
     try{
-      const res = await api.delete(`properties/notes/delete/${notes[index]._id}`);
+      const res = await api.delete(`cars/notes/delete/${notes[index]._id}`);
       if(res.status === 200){
         const updatedNotes = notes.filter((_, i) => i !== index);
         setNotes(updatedNotes);

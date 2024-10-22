@@ -17,7 +17,7 @@ const TableData = ({ propsTable, onDelete }) => {
       <td className=" px-4 py-3 border-r-2">{propsTable.listingType}</td>
       <td className=" px-4 py-3 border-r-2 text-gray-700">{propsTable.price}</td>
       <td className=" px-4 py-3 border-r-2 flex justify-evenly items-center h-16 w-36 text-lg text-center">
-        <Link to={`/edit-property/${propsTable.id}`} className="text-green-500 flex justify-center items-center h-10 w-10 text-xl font-bold  
+        <Link to={`/edit-car/${propsTable.id}`} className="text-green-500 flex justify-center items-center h-10 w-10 text-xl font-bold  
         bg-gray-100 rounded-md shadow-md hover:bg-gray-300"><SlNote /></Link>
         <Link onClick={() => onDelete(propsTable.id)} className="text-red-500 flex justify-center items-center h-10 w-10 text-xl font-bold  
         bg-gray-100 rounded-md shadow-md
@@ -26,7 +26,7 @@ const TableData = ({ propsTable, onDelete }) => {
     </tr>
   )
 }
-// onClick={() => navigate(`../properties/${propsCard.id}`)}
+// onClick={() => navigate(`../cars/${propsCard.id}`)}
 
 // Define propsTable for your component
 TableData.propTypes = {

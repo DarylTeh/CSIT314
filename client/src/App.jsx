@@ -13,11 +13,11 @@ import ErrorPage from './pages/ErrorPage';
 import ChangePassword from './pages/ChangePassword';
 import RoutePrivate from './pages/RoutePrivate';
 import Dashboard from './pages/Dashboard';
-import AddProperty from './pages/AddProperty';
-import EditProperty from './pages/EditProperty';
-import Property from './pages/Property';
-import PropertyList from './pages/PropertyList';
-import Properties from './pages/Properties';
+import AddCar from './pages/AddCar';
+import EditCar from './pages/EditCar';
+import Car from './pages/Car';
+import CarList from './pages/CarList';
+import Cars from './pages/Cars';
 import FavDashboard from "./pages/FavDashboard";
 import Calculator from "./pages/Calculator";
 
@@ -79,17 +79,17 @@ export default function App() {
           <Route path="/signup" element={<SignUp />} />
           {/* <RouteWrapper path="/profile" element={<Profile/>} isPrivate /> */}
           <Route path="/" element={<Home/>} />
-          <Route path="/properties">
-            <Route index element={<Properties />} />
-            <Route path=":propertyId" element={<Property />} />
+          <Route path="/cars">
+            <Route index element={<Cars />} />
+            <Route path=":carId" element={<Car />} />
           </Route>
           <Route path="" element={<RoutePrivate />} >
             <Route path="/dashboard" element={<Dashboard />}/>
             <Route path="/profile" element={<Profile />}/>
             <Route path="/change-password" element={<ChangePassword />} />
-            <Route path="/add-property" element={<AddProperty />}/>
-            <Route path="/edit-property/:propertyId" element={<EditProperty />}/>
-            <Route path="/my-listing" element={<PropertyList />}/>
+            <Route path="/add-car" element={<AddCar />}/>
+            <Route path="/edit-car/:carId" element={<EditCar />}/>
+            <Route path="/my-listing" element={<CarList />}/>
             <Route path="/fav-listing" element={<FavDashboard />} /> 
             <Route path="/mortgage-calculator" element={<Calculator />} />
           </Route>

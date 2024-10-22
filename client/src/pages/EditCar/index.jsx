@@ -1,14 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Layout from "../../Layout/DashLayout";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { toast } from 'react-toastify';
 import { useSelector } from 'react-redux';
-import { AiOutlineCloudUpload } from 'react-icons/ai';
 import api from '../../utils/api';
 
-export default function AddProperty() {
-  const fileRef = useRef(null);
+export default function EditCar() {
   const {userInfo, isLoading } = useSelector((state) => state.auth);
+  const fileRef = useRef(null);
+  const params = useParams();
   const [imageForDisplay, setImageForDisplay] = useState(false);  
   const navigate = useNavigate();
 
@@ -18,20 +18,33 @@ export default function AddProperty() {
     address: '',
     listingType: 'apartments',
     category: 'rent',
-    price: 70,
+    price: 0,
     bedrooms: 1,
     bathrooms: 1,
     furnished: false,
     parking: false,
     imageUrl: null,
   });
+  
+  
+  useEffect(() => {
+    const getCars = async () => {
+      try {
+        const res = await api.get(`/cars/${params.carId}`)
+        setFormData(res.data);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    getCars();
+  }, [params.carId])
 
   const handleChange = (e) => {
-    const { name, checked, value, files } = e.target; // Changed 'file' to 'files' to correctly access the files property
+    const { name, checked, value, files } = e.target;
     if (name === 'imageUrl') {
       setFormData({
         ...formData,
-        [name]: files[0] // Changed 'file' to 'files[0]' to correctly access the first file in the array
+        [name]: files[0]
       });
       setImageForDisplay(URL.createObjectURL(files[0]));
     }
@@ -42,41 +55,42 @@ export default function AddProperty() {
       });
     }
   };
+  console.log(formData)
 
-  const handleAddProperty = async (e) => {
+  const handleEditCar = async (e) => {
     e.preventDefault();
-  
     try {
       // Validate that all required fields are provided
       if ( !formData.price || !formData.address || 
         !formData.description || !formData.title) {
         toast.error("Please fill in all required fields");
         return;
-      }  
-  
-      const propertyData = {
+      }
+
+      const carData = {
         ...formData,
-        imageUrl: formData.imageUrl,
-        ownerId: userInfo.data._id,
-        views: 1
+        // imageUrl: typeof imageUrl === 'object' ? formData.imageUrl : formData.imageUrl,
+        imageUrl: formData.imageUrl,        
+        ownerId: userInfo.data._id
       };
-  
-      const res = await api.post('/properties/add', 
-      propertyData, {
+      console.log(carData)
+      console.log(formData.imageUrl);
+
+      const res = await api.put(`/cars/update/${params.carId}`,
+      carData, {
         headers: { 
           'Content-Type': 'multipart/form-data',
           Authorization: `Bearer ${userInfo.accessToken}`
         }
       });
-  
-      toast.success(res?.data?.message);
+
+      toast.success(res.message);
       navigate('/my-listing');
     } catch(err) {
+      console.error(err.message);
       toast.error(err.message);
-      console.log(err.message);
     }
-  };
-
+  }
 
   return  (
     <Layout>
@@ -88,13 +102,13 @@ export default function AddProperty() {
                 <div className="rounded-t mb-0 px-6 py-6">
                   <div className="text-center mb-3">
                     <strong className="text-secondary sm:text-3xl text-2xl font-bold title-font mb-2">
-                      Add property
+                      Edit car
                     </strong>
                   </div>
                   <hr className="mt-6 border-b-1 border-gray-300" />
                 </div>
                 <div className="flex-auto px-6 lg:px-10 py-6 pt-0">
-                  <form onSubmit={handleAddProperty}>
+                  <form onSubmit={handleEditCar}>
                     {/* Title */}
                     <div className="relative w-full mb-5">
                       <label
@@ -166,12 +180,12 @@ export default function AddProperty() {
                                 rounded text-sm shadow  transition duration-150 ease-in-out cursor-pointer
                                  hover:border-2 border-gray-300">
                               {!imageForDisplay ? (
-                                <AiOutlineCloudUpload 
-                                  color="#4a859d"
-                                  size={70} 
-                                  aria-label="Loading..."
-                                  data-testid="loader"
-                                />
+                                <img
+                                src={formData.imageUrl}
+                                alt="Selected"
+                                onClick={()=> fileRef.current.click()}
+                                className="w-full h-full rounded-md"
+                              />
                               ) : (
                               <img
                                 src={imageForDisplay}
@@ -308,7 +322,7 @@ export default function AddProperty() {
                         disabled={isLoading}
                         className="bg-secondary text-white active:bg-gray-700 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full transition duration-150 ease-in-out"
                         type="submit">
-                          { isLoading ? 'Loading...' : 'Add property'}
+                          { isLoading ? 'Loading...' : 'Edit car'}
                       </button>
                     </div>
                   </form>

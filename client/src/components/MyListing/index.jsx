@@ -7,7 +7,7 @@ import api from '../../utils/api';
 import { toast } from 'react-toastify';
 
 const MyListing = () => {
-  const [properties, setProperties] = useState(null);
+  const [cars, setCars] = useState(null);
   const [loading, setLoading] = useState(true);
   const {userInfo} = useSelector((state) => state.auth);
 
@@ -15,12 +15,12 @@ const MyListing = () => {
     const getMyListing = async () => {
       try {
         const token = userInfo.accessToken;
-        const res = await api.get('/properties',{
+        const res = await api.get('/cars',{
           headers: {
             Authorization: `Bearer ${token}`,
           },
         });
-        setProperties(res.data);
+        setCars(res.data);
         setLoading(false);        
         
       } catch (error) {
@@ -32,17 +32,17 @@ const MyListing = () => {
   }, [userInfo.accessToken]);
 
 
-  const handleDeleteProperty = async (propertyId) => {
+  const handleDeleteCar = async (carId) => {
     try {
       const token = userInfo.accessToken;
-      await api.delete(`/properties/delete/${propertyId}`, {
+      await api.delete(`/cars/delete/${carId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
-      // Remove the deleted property from the state
-      setProperties(properties.filter((property) => property.id !== propertyId));
-      toast.success('Property deleted successfully');
+      // Remove the deleted car from the state
+      setCars(cars.filter((car) => car.id !== carId));
+      toast.success('Car deleted successfully');
     } catch (error) {
       console.error(error);
     }
@@ -60,7 +60,7 @@ const MyListing = () => {
                 data-testid="loader"
               />
             </div>
-            ) : properties ? (
+            ) : cars ? (
         <table className="table-auto w-full text-left whitespace-no-wrap">
           <thead>
             <tr>
@@ -74,8 +74,8 @@ const MyListing = () => {
           </thead>
           <tbody>
           
-             { properties.map((prop, i) => (
-                <TableData propsTable={prop} key={i} onDelete={handleDeleteProperty} />
+             { cars.map((prop, i) => (
+                <TableData propsTable={prop} key={i} onDelete={handleDeleteCar} />
               ))}
 
           </tbody>
@@ -83,7 +83,7 @@ const MyListing = () => {
         ) : ( 
           <div className='w-full h-32 m-auto '>
             <p className='text-3xl text-gray-400 font-samibold mb-7'>No Listing to Show!</p>
-            <Link to='/add-property' className='py-2 px-3 bg-secondary text-gray-200 rounded-md hover:bg-gray-600 hover:shadow-md'>Create Listing</Link>
+            <Link to='/add-car' className='py-2 px-3 bg-secondary text-gray-200 rounded-md hover:bg-gray-600 hover:shadow-md'>Create Listing</Link>
           </div>
         )}
       </div>

@@ -5,11 +5,11 @@ import mongoose from 'mongoose';
 
 // const mongoose = require('mongoose');
 
-// Add property
+// Add car
 export const addNote = async (req, res, next) => {
-  const { propertyId, description } = req.body;
+  const { carId, description } = req.body;
 
-  console.log("PropertyId in addNote : "+propertyId);
+  console.log("CarId in addNote : "+carId);
   console.log("Description in addNote : "+description);
 
   try {
@@ -17,8 +17,8 @@ export const addNote = async (req, res, next) => {
     if (!description) {
       return next(createError(400, "Please fill in note for saving."));
     }
-    if(!propertyId){
-      return next(createError(400, "No property detected for this note."));
+    if(!carId){
+      return next(createError(400, "No car detected for this note."));
     }
 
     // TODO: for now comment out to bypass this checking
@@ -29,9 +29,9 @@ export const addNote = async (req, res, next) => {
     //   return next(createError(404, "Owner not found"));
     // }
 
-    // Create a new property
+    // Create a new car
     const newNote = await Note.create({
-      propertyId,
+      carId,
       description
     });
   
@@ -45,15 +45,14 @@ export const addNote = async (req, res, next) => {
   }
 };
 
-// Retrieve a single property using its ID.
+// Retrieve a single car using its ID.
 export const getNotes = async (req, res, next) => {
   console.log("getNotes method executed.");
-  // const propID =  mongoose.Types.ObjectId(req.params.propertyId);
-  const propID = req.params.propertyId;
+  const propID = req.params.carId;
 
   try{
     // const note = await Note.findById(propID).populate('ownerId', '-password -refreshToken');
-    const notes = await Note.find({ propertyId : propID});
+    const notes = await Note.find({ carId : propID});
     if (!notes) {
       return next(createError(404, 'No note has been created'));
     } 
@@ -64,34 +63,22 @@ export const getNotes = async (req, res, next) => {
   }
 };
 
-// Update property by ID
+// Update car by ID
 export const updateNote = async (req, res, next) => {
   const { id } = req.params;
 
   const { description } = req.body;
 
   try {
-    // Find the property by id
+    // Find the car by id
     let note = await Note.findById(id);
 
-    //  Check if the property exists
+    //  Check if the car exists
     if (!note) {
       return next(createError(404, "Note not found"));
     }
-
-    // TODO: For now, disable Auth check for testing purpose. To be enabled next time.
     
-    // Ensure that the user owns the property
-    // const ownerId = req.user;
-    // if (!ownerId) {
-    //   return next(createError(404, "Owner not found"));
-    // }
-
-    // if (property.ownerId.toString() !== ownerId) {
-    //   return next(createError(403, "You are not authorized to edit this property"));
-    // }
-
-    // Update the property
+    // Update the car
     note = await Note.findByIdAndUpdate(id, {
       description
     }, { new: true });
@@ -111,27 +98,19 @@ export const updateNote = async (req, res, next) => {
   }
 };
 
-// Delete property by ID
+// Delete car by ID
 export const deleteNote = async (req, res, next) => {
 
   try {
-    // Find the property by ID
+    // Find the car by ID
     const note = await Note.findById(req.params.id);
 
-    // Check if the property exists
+    // Check if the car exists
     if (!note) {
       return res.status(404).json({ error: 'Note not found!' });
     }
 
-    // TODO: Commented out for testing purpose, to be enabled next time.
-    // console.log(req.user !== property.ownerId.toString());
-
-    // // Check if the user is authorized to delete the property
-    // if (req.user !== property.ownerId.toString()) {
-    //   return res.status(401).json({ error: 'You can only delete your own properties!' });
-    // }
-
-    // Delete the property
+    // Delete the car
     await Note.findByIdAndDelete(req.params.id);
 
     // Respond with success message

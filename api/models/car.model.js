@@ -5,7 +5,7 @@ const priceChangeSchema = new mongoose.Schema({
   price: { type: Number, required: true },
 });
 
-const PropertySchema = new mongoose.Schema({
+const CarSchema = new mongoose.Schema({
   title: { type: String, required: true },
   description: { type: String, required: true },
   address: { type: String, required: true },
@@ -23,9 +23,9 @@ const PropertySchema = new mongoose.Schema({
 }, { timestamps: true });
 
 // Adding virtual id for frontend friendliness
-PropertySchema.virtual('id').get(function () {
+CarSchema.virtual('id').get(function () {
   return this._id.toHexString();
 })
-PropertySchema.set('toJSON', { virtuals: true });
+CarSchema.set('toJSON', { virtuals: true });
 
-export default mongoose.model('Property', PropertySchema);
+export default mongoose.model('Car', CarSchema);

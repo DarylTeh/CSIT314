@@ -17,12 +17,12 @@ const menuItems = {
   // Main
   main: [
     { name: "Dashboard", icon: <SlLayers/>, link: "/dashboard" },
-    { name: "Add Property", icon: <SlPlus/>, link: "/add-property" },
+    { name: "Add Car", icon: <SlPlus/>, link: "/add-car" },
     { name: "Message", icon: <SlEnvolope/>, link: "/dashboard" }
   ],
   // Manage Listing
   manageListing: [
-    { name: "My Properties", icon: <SlHome/>, link: "/my-listing" },
+    { name: "My Cars", icon: <SlHome/>, link: "/my-listing" },
     { name: "My Favorites", icon: <SlHeart/>, link: "/fav-listing" },
     { name: "Reviews", icon: <SlBubble/>, link: "/dashboard" },
     { name: "Mortgage Calculator", icon: <GiCalculator />, link: "/mortgage-calculator" }

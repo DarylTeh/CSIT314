@@ -14,10 +14,10 @@ import emailjs from '@emailjs/browser';
 import NotesApp from './Note';
 import LikeButton from '../../components/LikeButton';
 
-export default function Property() {
+export default function Car() {
   const {userInfo} = useSelector((state) => state.auth);
   const params = useParams();
-  const [property, setProperty] = useState(null);
+  const [car, setCar] = useState(null);
   const [loading, setLoading] = useState(true);
   const formRef = useRef()
 
@@ -31,7 +31,7 @@ export default function Property() {
   e.preventDefault();
 
   const message = messageRef.current.value.trim();
-  const placeholderText = `I am interested in your property '${property?.title}'.`;
+  const placeholderText = `I am interested in your car '${car?.title}'.`;
 
   if (message === '') {
     messageRef.current.value = placeholderText;
@@ -57,23 +57,23 @@ export default function Property() {
 };
 
   useEffect(() => {
-    const getProperty = async () => {
+    const getCar = async () => {
       try {
-        const res = await api.get(`/properties/${params.propertyId}`);
-        setProperty(res.data);
+        const res = await api.get(`/cars/${params.carId}`);
+        setCar(res.data);
         setLoading(false);
-        const viewRes = await api.put(`/properties/views/${params.propertyId}`);
+        const viewRes = await api.put(`/cars/views/${params.carId}`);
         // toast.success("ViewRes : "+viewRes.data);
       } catch (error) {
         console.error(error);
         setLoading(false);
       }
     };
-    getProperty();
-  }, [params.propertyId]);
+    getCar();
+  }, [params.carId]);
 
 
-  // console.log(property?.ownerId?.avatar);
+  // console.log(car?.ownerId?.avatar);
 
   return (
     <Layout>
@@ -88,31 +88,31 @@ export default function Property() {
               data-testid="loader"
             />
           </div>
-        ) : property ? (
+        ) : car ? (
           <div className="lg:w-8/12 mx-auto">
             <div className="flex justify-between items-center w-full relative mb-4">
-              <h1 className="text-3xl font-semibold text-gray-800">{property.title}</h1>
-              <span className='hidden md:block bg-secondary text-sm px-3 py-2 ml-3 text-gray-50 rounded-md'>For {property.category.toUpperCase()}</span>
-              {( userInfo?.data?._id == property?.ownerId?.id) ? (
+              <h1 className="text-3xl font-semibold text-gray-800">{car.title}</h1>
+              <span className='hidden md:block bg-secondary text-sm px-3 py-2 ml-3 text-gray-50 rounded-md'>For {car.category.toUpperCase()}</span>
+              {( userInfo?.data?._id == car?.ownerId?.id) ? (
                 <div className="absolute top-0 right-0 flex gap-3">
                   <SlShare className='text-3xl font-bold cursor-pointer w-10 h-10 py-2 bg-gray-200 shadow-sm rounded-md hover:shadow-md hover:text-secondary'/>
                   <Link
                     className="text-white bg-green-600 py-2 px-5 hover:bg-gray-500 rounded text-2xl"
-                    to={`/edit-property/${property.id}`}
+                    to={`/edit-car/${car.id}`}
                   ><SlNote /></Link>
                 </div>
                 ) : (
                   <div className="absolute top-0 right-0 flex gap-3">
                     {/* <SlHeart className='text-3xl font-bold cursor-pointer w-10 h-10 py-2 bg-gray-200 shadow-sm rounded-md hover:shadow-md hover:text-secondary'/> */}
-                    <LikeButton userId={userInfo.data._id} propertyId={params.propertyId}/>
+                    <LikeButton userId={userInfo.data._id} carId={params.carId}/>
                     <SlShare className='text-3xl font-bold cursor-pointer w-10 h-10 py-2 bg-gray-200 shadow-sm rounded-md hover:shadow-md hover:text-secondary'/>
                   </div>
                 )}
             </div>
             <div className="h-96 my-2">
               <img
-                src={property.imageUrl}
-                alt="Property"
+                src={car.imageUrl}
+                alt="Car"
                 className="object-cover object-center h-full w-full rounded-md shadow-md"
               />
             </div>
@@ -120,16 +120,16 @@ export default function Property() {
               <div className="sm:w-2/3 sm:pr-4 sm:py-8 mt-4 sm:mt-0 border-b border-gray-200">
               <div className="flex justify-between w-full mb-3">
                   <p className="text-lg mb-3 flex items-center gap-1">
-                    {property.views} views
+                    {car.views} views
                   </p>
                 </div>
                 {/* Address */}
                 <div className="flex justify-between w-full mb-3">
                   <p className="text-lg mb-3 flex items-center gap-1">
-                    <SlLocationPin /> {property.address}
+                    <SlLocationPin /> {car.address}
                   </p>
-                  {/* <p className="mb-3">{property.city} London</p> */}
-                  <h3 className="text-gray-800 text-2xl"> ${property.price}</h3>
+                  {/* <p className="mb-3">{car.city} London</p> */}
+                  <h3 className="text-gray-800 text-2xl"> ${car.price}</h3>
                 </div>
 
                 {/* Description */}
@@ -137,33 +137,33 @@ export default function Property() {
                   <h2 className="title-font font-medium text-lg text-gray-900 mb-5">
                     Description
                   </h2>
-                  <p>{property.description}</p>
+                  <p>{car.description}</p>
                   <Link className="text-secondary inline-flex items-center">
                     Learn More
                   </Link>
                 </div>
 
-                {/* Property Details */}
+                {/* Car Details */}
                 <div className=" p-4 bg-slate-50 rounded-md shadow-md mb-7">
                   <h2 className="title-font font-medium text-lg text-gray-900 mb-5">
-                    Property Details
+                    Car Details
                   </h2>
                   <div className="flex flex-wrap justify-between gap-3">
                     <div className="flex flex-col mb-1">
                       <ul>
-                        <li className='flex gap-3'><p>Property ID: </p><span>{property.id.slice(0, 15)}...</span></li>
-                        <li className='flex gap-3'><p>Type: </p> <span>{property.listingType}</span></li>
-                        <li className='flex gap-3'><p>Category: </p><span>{property.category}</span></li>
-                        <li className='flex gap-3'><p>Price: </p><span>{property.price}$</span></li>
+                        <li className='flex gap-3'><p>Car ID: </p><span>{car.id.slice(0, 15)}...</span></li>
+                        <li className='flex gap-3'><p>Type: </p> <span>{car.listingType}</span></li>
+                        <li className='flex gap-3'><p>Category: </p><span>{car.category}</span></li>
+                        <li className='flex gap-3'><p>Price: </p><span>{car.price}$</span></li>
                       </ul>
                     </div>
 
                     <div className="flex flex-col">
                     <ul>
-                      <li className='flex gap-3'><p>Bedrooms: </p><span>{property.bedrooms}</span></li>
-                      <li className='flex gap-3'><p>Bathrooms: </p><span>{property.bathrooms}</span></li>
-                      <li className='flex gap-3'><p>Furnished: </p><span>{property.furnished ? 'Yes' : 'No'}</span></li>
-                      <li className='flex gap-3'><p>Parking: </p><span>{property.parking ? 'Yes' : 'No'}</span></li>
+                      <li className='flex gap-3'><p>Bedrooms: </p><span>{car.bedrooms}</span></li>
+                      <li className='flex gap-3'><p>Bathrooms: </p><span>{car.bathrooms}</span></li>
+                      <li className='flex gap-3'><p>Furnished: </p><span>{car.furnished ? 'Yes' : 'No'}</span></li>
+                      <li className='flex gap-3'><p>Parking: </p><span>{car.parking ? 'Yes' : 'No'}</span></li>
                     </ul>
                   </div>
                   </div>
@@ -177,7 +177,7 @@ export default function Property() {
                       </h2>
                       <div className="">
                         <p className="text-lg flex items-center gap-1">
-                          <SlLocationPin /> {property.address}
+                          <SlLocationPin /> {car.address}
                         </p>
                       </div>
                   </div>
@@ -201,18 +201,18 @@ export default function Property() {
                     Notes
                   </h2>
                   <article className="md:h-72 w-full h-56">
-                    <NotesApp propertyId={params.propertyId}/>
+                    <NotesApp carId={params.carId}/>
                   </article>
                 </div>
               </div>
 
-              {/* Send Message to the Property's Owner */}
+              {/* Send Message to the Car's Owner */}
               <div className="sm:w-1/3 text-center sm:pl-4 sm:py-8 sm:border-l border-gray-200 mt-4 ">
                 <div className="w-18 h-18 rounded-full inline-flex items-center justify-center ">
-                  <img src={property?.ownerId?.avatar} alt="Property Owner" className="object-cover object-center h-full w-full rounded-full " />
+                  <img src={car?.ownerId?.avatar} alt="Car Owner" className="object-cover object-center h-full w-full rounded-full " />
                 </div>
                 <div className="flex flex-col items-center text-center justify-center">
-                  <h2 className="font-medium title-font mt-2 text-gray-900 text-lg">{property?.ownerId?.username}</h2>
+                  <h2 className="font-medium title-font mt-2 text-gray-900 text-lg">{car?.ownerId?.username}</h2>
                   <div className="w-12 h-1 bg-secondary rounded mt-1 mb-4"></div>
 
                   <form className='min-w-[85%]' ref={formRef} onSubmit={sendEmail}>
@@ -221,7 +221,7 @@ export default function Property() {
                       <input
                           type="email"
                           name="receiver_email"
-                          defaultValue={property?.ownerId?.email}
+                          defaultValue={car?.ownerId?.email}
                           className="border-0 px-3 py-3 placeholder-gray-400 text-gray-700 bg-gray-200 rounded text-sm shadow focus:outline-none focus:ring w-full"
                           placeholder="To email"
                           autoComplete="email"
@@ -250,7 +250,7 @@ export default function Property() {
                           type="text"
                           name='receiver_name'
                           hidden
-                          defaultValue={property?.ownerId?.username}
+                          defaultValue={car?.ownerId?.username}
                           className="border-0 px-3 py-3 placeholder-gray-400 text-gray-700 bg-gray-100 rounded text-sm shadow focus:outline-none focus:ring w-full"
                           placeholder='To name'
                           autoComplete='username'
@@ -287,7 +287,7 @@ export default function Property() {
                       <textArea
                           name="message"
                           className="border-0 px-3 py-3 placeholder-gray-400 text-gray-700 bg-gray-100 rounded text-sm shadow focus:outline-none focus:ring w-full h-32"
-                          placeholder={`I am interested in your property '${property?.title}'.`}
+                          placeholder={`I am interested in your car '${car?.title}'.`}
                           autoComplete='Message'
                           ref={messageRef}
                       ></textArea>
@@ -309,7 +309,7 @@ export default function Property() {
           </div>
         ) : (
             <p className='text-2xl text-center text-gray-400 font-bold'>
-              Property not found
+              Car not found
             </p>
         )}
 

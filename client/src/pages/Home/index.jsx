@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react';
 import Layout from '../../Layout';
 import bgImg from '/src/assets/images/bg.png'
 import Search from '../../components/Search';
-import PropertyCard from '../../components/PropertyCard';
+import CarCard from '../../components/CarCard';
 import BeatLoader from 'react-spinners/BeatLoader';
 import api from '../../utils/api';
 
 export default function Home() {
-  const [properties, setProperties] = useState(null);
+  const [cars, setCars] = useState(null);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
   const [otherTerm, setOtherTerm] = useState({
@@ -21,10 +21,10 @@ export default function Home() {
   });
 
   useEffect(() => {
-    const getProperties = async () => {
+    const getCars = async () => {
       try {
         const {minPrice, maxPrice, bedroomNumber, listingType, category, furnished, parking} = otherTerm;
-        const res = await api.get(`/properties/all`, {params: {
+        const res = await api.get(`/cars/all`, {params: {
           search: searchTerm,
           minPrice: minPrice,
           maxPrice: maxPrice,
@@ -34,14 +34,14 @@ export default function Home() {
           furnished: furnished,
           parking: parking
         }});
-        setProperties(res.data);
+        setCars(res.data);
         setLoading(false);
       } catch (error) {
         console.error(error);
         setLoading(false);
       }
     };
-    getProperties();
+    getCars();
   }, [searchTerm, otherTerm]);
 
   return (
@@ -52,8 +52,7 @@ export default function Home() {
           <div className="flex flex-col justify-center items-start py-4 mt-16 w-1/2">
             <div className="hero-title">
               <h1 className="text-2xl md:text-3xl lg:text-4xl font-semibold lg:font-bold text-gray-200">
-                Find Your Desired <br />
-                Property In One Place
+                Good Cars Low Prices!
               </h1>
             </div>
             {/* <Search /> */}
@@ -75,27 +74,18 @@ export default function Home() {
                   data-testid="loader"
                 />
               </div>
-            ) : properties && properties.length > 0 ? (
+            ) : cars && cars.length > 0 ? (
 
               <div className='w-full'>
-                {/* Search: Buy/Rent , I'm looking to (buy Apartments), Location(Berlin, Germany), Price Range($10,0000-$200,000) */}
-                {/* Top Properties */}
-                {/* Recent Properties for Sold */}
-                {/* Popular Cities */}
-                {/* Buy, Rent & Sell */}
-                {/* Why Choose Us */}
-                {/* Meet Our Agents */}
-                {/* Client Review */}
-
                 <div className="flex flex-wrap justify-center gap-5 mt-8 -m-4">
-                  {properties.map((prop, i) => (
-                    <PropertyCard propsCard={prop} key={i} />
+                  {cars.map((prop, i) => (
+                    <CarCard propsCard={prop} key={i} />
                   ))}
                 </div>
               </div>
             ) : ( 
               <p className='text-2xl text-center text-gray-400 font-bold'>
-                Property not found
+                Car not found
               </p>
             )}
           </div> 

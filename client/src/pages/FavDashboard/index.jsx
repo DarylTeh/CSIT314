@@ -3,42 +3,42 @@ import Layout from "../../Layout/DashLayout";
 import { useSelector } from 'react-redux';
 import api from '../../utils/api';
 import { toast } from 'react-toastify';
-import PropertyCard from '../../components/PropertyCard';
+import CarCard from '../../components/CarCard';
 
 const FavDashboard = () => {
   const {userInfo} = useSelector((state) => state.auth);
-  const [properties, setProperties] = useState([]);
-  const [savedProperties, setSavedProperties] = useState([]);
+  const [cars, setCars] = useState([]);
+  const [savedCars, setSavedCars] = useState([]);
 
   useEffect(() => {
-    const getSavedProperties = async () => {
+    const getSavedCars = async () => {
       try {
         console.log("FavDashboard userId : "+userInfo.data._id);
-        const savedres = await api.get(`properties/save/${userInfo.data._id}`);
-        console.log("FavDashboard savedProperties : "+savedres.data);
-        setSavedProperties(savedres.data);
-        const propertiesData = await Promise.all(
+        const savedres = await api.get(`cars/save/${userInfo.data._id}`);
+        console.log("FavDashboard savedCars : "+savedres.data);
+        setSavedCars(savedres.data);
+        const carsData = await Promise.all(
           savedres.data.map(async (p) => {
-            console.log("FavDashboard propertyId : "+p.propertyId);
-            const res = await api.get(`/properties/${p.propertyId}`);
-            console.log("FavDashboard Properties : "+res.data);
+            console.log("FavDashboard carId : "+p.carId);
+            const res = await api.get(`/cars/${p.carId}`);
+            console.log("FavDashboard Cars : "+res.data);
             return res.data;
           })
         )
-        console.log("FavDashBoard propertiesData : "+propertiesData);
-        setProperties(propertiesData);
-        console.log("Retrieved savedProperties successfully.");
+        console.log("FavDashBoard carsData : "+carsData);
+        setCars(carsData);
+        console.log("Retrieved savedCars successfully.");
       }catch(error){
         toast.error(error.message);
         console.log(error.message);
       }
     }
-    getSavedProperties();
+    getSavedCars();
   }, [userInfo.data._id]);
 
   useEffect(() => {
-    console.log("FavDashBoard properties : "+properties);
-  }, [properties]);
+    console.log("FavDashBoard cars : "+cars);
+  }, [cars]);
 
   return (
     <Layout>
@@ -46,16 +46,16 @@ const FavDashboard = () => {
         <div className="container px-5 py-24 mx-auto h-[79vh]">
         <div className="flex flex-col text-center w-full mb-16">
           <strong className="text-secondary sm:text-3xl text-2xl font-bold title-font mb-2">
-            Favourite Properties
+            Favourite Cars
           </strong>
           <p className="lg:w-2/3 mx-auto leading-relaxed text-base">Welcome to your favourtite dashboard!</p>
         </div>
-          { savedProperties.length === 0 || properties === null? 
+          { savedCars.length === 0 || cars === null? 
             <div className='w-full h-32 m-auto '>
-              <p className='text-3xl text-gray-400 font-samibold mb-7'>No favorite properties</p>
+              <p className='text-3xl text-gray-400 font-samibold mb-7'>No favorite cars</p>
             </div> :        
-            properties.map((p, index) => {
-              return <PropertyCard propsCard={p} key={index} />
+            cars.map((p, index) => {
+              return <CarCard propsCard={p} key={index} />
             })
           }
         </div>

@@ -2,11 +2,11 @@ import React from 'react'
 import PropTypes from 'prop-types'; // Import PropTypes
 import { useNavigate } from "react-router-dom";
 
-const PropertyCard = ({ propsCard }) => {
+const CarCard = ({ propsCard }) => {
   const navigate = useNavigate();
 
   return (
-    <div onClick={() => navigate(`../properties/${propsCard.id}`)}
+    <div onClick={() => navigate(`../cars/${propsCard.id}`)}
       className="bg-slate-100 w-full sm:w-4/5 md:w-2/5 lg:w-1/3 shadow-md rounded-lg cursor-pointer hover:shadow-lg" 
     >
       <img className="min-h-64 w-full rounded-md object-cover object-center shadow-lg" src={propsCard.imageUrl} alt="home" style={{ maxWidth: '500px', maxHeight: '350px' }}/>
@@ -34,7 +34,7 @@ const PropertyCard = ({ propsCard }) => {
 };
 
 // Define propTypes for your component
-PropertyCard.propTypes = {
+CarCard.propTypes = {
   propsCard: PropTypes.shape({
     id: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
@@ -47,4 +47,4 @@ PropertyCard.propTypes = {
   }).isRequired,
 };
 
-export default PropertyCard;
+export default CarCard;

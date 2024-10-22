@@ -9,38 +9,38 @@ const LikeButton = (props) => {
   const [saved, setSaved] = useState(false);
 
   useEffect(() => {
-    const getSavedProperty = async() => {
-      console.log("getSavedProperty in LikeButton executed.");
+    const getSavedCar = async() => {
+      console.log("getSavedCar in LikeButton executed.");
       try{
         // if(props.userId != null || props.userId != undefined){
-        const res = await api.get(`properties/save/${props.userId}/${props.propertyId}`);
-        console.log("getSavedProperty res : "+res.data);
+        const res = await api.get(`cars/save/${props.userId}/${props.carId}`);
+        console.log("getSavedCar res : "+res.data);
         res.data.length === 0 || res.data === null ? setSaved(false) : setSaved(true);
       // }
       } catch(err){
-        console.log("Fail to check whether user has saved this property.");
+        console.log("Fail to check whether user has saved this car.");
         toast.error(err.message);
-        // toast.error("Fail to check whether user has saved this property.");
+        // toast.error("Fail to check whether user has saved this car.");
       }
     }
-    getSavedProperty();
-  }, [props.propertyId]);
+    getSavedCar();
+  }, [props.carId]);
 
   const toggleLike = () => {
     setSaved(!saved);
 
     console.log("LikeButton userId : "+props.userId);
-    console.log("LikeButton propertyId : "+props.propertyId);
+    console.log("LikeButton carId : "+props.carId);
 
-    const buyerSavedProperty = {
+    const buyerSavedCar = {
       userId: props.userId,
-      propertyId: props.propertyId
+      carId: props.carId
     }
 
     if(!saved){
       try{
-        const res = api.post(`properties/save/add`, 
-          buyerSavedProperty
+        const res = api.post(`cars/save/add`, 
+          buyerSavedCar
           // ,
           // {
           //   headers: {
@@ -48,7 +48,7 @@ const LikeButton = (props) => {
           //   }
           // }
         );
-        toast.success("Property added into favourite list.");
+        toast.success("Car added into favourite list.");
       } catch(err){
         toast.error(err.message);
         console.log(err.message);
@@ -56,7 +56,7 @@ const LikeButton = (props) => {
     }
     else{
       try{
-        const res = api.delete(`properties/save/remove/${props.userId}/${props.propertyId}`
+        const res = api.delete(`cars/save/remove/${props.userId}/${props.carId}`
         // ,
         //   {
         //     headers: {
@@ -64,7 +64,7 @@ const LikeButton = (props) => {
         //     }
         //   }
         );
-        toast.success("Saved property removed successfully.");
+        toast.success("Saved car removed successfully.");
       }
       catch (error) {
         toast.error(error.message);

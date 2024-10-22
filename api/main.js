@@ -9,9 +9,9 @@ import errorMiddleware from './middleware/error.middleware.js';
 // Routes
 import authRoute from './routes/auth.route.js';
 import userRoute from './routes/user.route.js';
-import propertyRoute from './routes/property.route.js';
+import carRoute from './routes/car.route.js';
 import noteRoute from './routes/note.route..js';
-import buyerPropertySavedRoute from './routes/buyerPropertySaved.route.js';
+import buyerCarSavedRoute from './routes/buyerCarSaved.route.js';
 
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -47,9 +47,9 @@ app.use('/images', express.static(path.join(__dirname, 'uploads')));
 // Routes
 app.use('/api/auth', authRoute);
 app.use('/api/users', userRoute);
-app.use('/api/properties', propertyRoute);
-app.use('/api/properties/notes', noteRoute);
-app.use('/api/properties/save', buyerPropertySavedRoute);
+app.use('/api/cars', carRoute);
+app.use('/api/cars/notes', noteRoute);
+app.use('/api/cars/save', buyerCarSavedRoute);
 
 
 // Error middleware (must be placed at the end)

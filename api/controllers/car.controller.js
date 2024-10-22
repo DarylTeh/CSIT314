@@ -1,9 +1,9 @@
 import { v2 as cloudinary } from 'cloudinary';
-import Property from '../models/property.model.js';
+import Car from '../models/car.model.js';
 import createError from '../helpers/createError.js';
 
-// Add property
-export const addProperty = async (req, res, next) => {
+// Add car
+export const addCar = async (req, res, next) => {
   const { title, description, address, price, listingType, 
     category, bedrooms, bathrooms, furnished, parking, views
   } = req.body;
@@ -28,8 +28,8 @@ export const addProperty = async (req, res, next) => {
       return next(createError(404, "Owner not found"));
     }
 
-    // Create a new property
-    const newProperty = await Property.create({
+    // Create a new car
+    const newCar = await Car.create({
       title,
       description,
       address,
@@ -46,8 +46,8 @@ export const addProperty = async (req, res, next) => {
     });
   
     res.status(201).json({ 
-      message: 'Property added successfully', 
-      newProperty 
+      message: 'Car added successfully', 
+      newCar 
     });
   } catch (error) {
     console.error(error.message);
@@ -55,16 +55,16 @@ export const addProperty = async (req, res, next) => {
   }
 };
 
-// Retrieve a single property using its ID.
-export const getProperty = async (req, res, next) => {
+// Retrieve a single car using its ID.
+export const getCar = async (req, res, next) => {
   const propID = req.params.id;
 
   try{
-    const property = await Property.findById(propID).populate('ownerId', '-password -refreshToken');
-    if (!property) {
-      return next(createError(404, 'No property found'));
+    const car = await Car.findById(propID).populate('ownerId', '-password -refreshToken');
+    if (!car) {
+      return next(createError(404, 'No car found'));
     } 
-    res.status(200).json(property);
+    res.status(200).json(car);
   } catch(error){
     next(error);
   }
@@ -74,66 +74,66 @@ export const updateView = async (req, res, next) => {
   const propID = req.params.id;
 
   try{
-    const property = await Property.findById(propID).populate('ownerId', '-password -refreshToken');
-    if(!property){
-      return next(createError(404, 'No property found'));
+    const car = await Car.findById(propID).populate('ownerId', '-password -refreshToken');
+    if(!car){
+      return next(createError(404, 'No car found'));
     }
-    property.views+=1;
-    await property.save();
-    if(!property){
-      return next(createError(404, 'Property\'s views fail to update.'));
+    car.views+=1;
+    await car.save();
+    if(!car){
+      return next(createError(404, 'Car\'s views fail to update.'));
     }
     res.status(200).json({
-      message: 'Property\'s views updated successfully.',
-      property
+      message: 'Car\'s views updated successfully.',
+      car
     });
   }catch(err){
     console.log("updateViews : "+err.message);
   }
 }
 
-// Retrieve all properties
-export const getAllProperties = async (req, res, next) => {
+// Retrieve all cars
+export const getAllCars = async (req, res, next) => {
   let { search, minPrice, maxPrice, bedroomNumber, listingType, category, furnished, parking } = req.query;
   let query = {};
 
-  // Filter properties by listing type
+  // Filter cars by listing type
   if (!listingType || listingType === 'all') {
     query.listingType = { $in: ['apartments', 'houses', 'offices'] };
   } else {
     query.listingType = listingType;
   }
 
-  // Filter properties by category
+  // Filter cars by category
   if (!category || category === 'all') {
     query.category = { $in: ['sale', 'rent'] };
   } else {
     query.category = category;
   }
 
-  // Filter properties by price range
+  // Filter cars by price range
   if (minPrice || maxPrice) {
     query.price = {};
     if (minPrice) query.price.$gte = parseFloat(minPrice);
     if (maxPrice) query.price.$lte = parseFloat(maxPrice);
   }
 
-  // Filter properties by bedroom number
+  // Filter cars by bedroom number
   if (bedroomNumber) {
     query.bedrooms = parseInt(bedroomNumber, 10);
   }
 
-  // Filter properties by furnished status
+  // Filter cars by furnished status
   if (furnished) {
     query.furnished = furnished === 'yes';
   }
 
-  // Filter properties by parking status
+  // Filter cars by parking status
   if (parking) {
     query.parking = parking === 'yes';
   }
 
-  // Filter properties by search term (title or description)
+  // Filter cars by search term (title or description)
   if (search) {
     query.$or = [
       { title: { $regex: search, $options: 'i' } },
@@ -144,56 +144,56 @@ export const getAllProperties = async (req, res, next) => {
   console.log("Search query:", query);
 
   try {
-    const properties = await Property.find(query)
+    const cars = await Car.find(query)
       .sort({ createdAt: 'desc' })
       .populate('ownerId', '-password -refreshToken');
-    res.status(200).json(properties);
+    res.status(200).json(cars);
   } catch (error) {
-    console.error("getAllProperties:", error.message);
+    console.error("getAllCars:", error.message);
     next(error);
   }
 };
 
-// Retrieve properties based on search query
-export const searchProperties = async (req, res, next) => {
+// Retrieve cars based on search query
+export const searchCars = async (req, res, next) => {
   try {
     const { search } = req.query;
-    const properties = await Property.find({
+    const cars = await Car.find({
       $or: [
         { title: { $regex: search, $options: 'i' } }, 
         { description: { $regex: search, $options: 'i' } }, 
-        // Search by property description (case-insensitive)
+        // Search by car description (case-insensitive)
       ],
     }).populate('ownerId', '-password -refreshToken');
     
-    res.status(200).json(properties);
+    res.status(200).json(cars);
   } catch (error) {
     console.error(error);
     next(error);
   }
 };
 
-// Retrive my properties list
+// Retrive my cars list
 export const getMyListing = async (req, res, next) => {
   try {
     const ownerID = req.user;
     // Check if ownerID is a valid ObjectId
     if (!ownerID) return next(createError(400, 'Invalid user ID format'));
 
-    const properties = await Property.find({ownerId: ownerID});
+    const cars = await Car.find({ownerId: ownerID});
 
-    // Check if properties array is empty
-    if (properties.length === 0) return next(createError(404, 'No properties found for this user'));
+    // Check if cars array is empty
+    if (cars.length === 0) return next(createError(404, 'No cars found for this user'));
 
-    res.status(200).json(properties);
+    res.status(200).json(cars);
   } catch (error) {
     console.error(error);
     next(error);
   }
 };
 
-// Update property by ID
-export const updateProperty = async (req, res, next) => {
+// Update car by ID
+export const updateCar = async (req, res, next) => {
   const { id } = req.params;
 
   const { title, description, address, price, listingType, 
@@ -201,22 +201,22 @@ export const updateProperty = async (req, res, next) => {
   } = req.body;
 
   try {
-    // Find the property by id
-    let property = await Property.findById(id);
+    // Find the car by id
+    let car = await Car.findById(id);
 
-    //  Check if the property exists
-    if (!property) {
-      return next(createError(404, "Property not found"));
+    //  Check if the car exists
+    if (!car) {
+      return next(createError(404, "Car not found"));
     }
     
-    // Ensure that the user owns the property
+    // Ensure that the user owns the car
     const ownerId = req.user;
     if (!ownerId) {
       return next(createError(404, "Owner not found"));
     }
 
-    if (property.ownerId.toString() !== ownerId) {
-      return next(createError(403, "You are not authorized to edit this property"));
+    if (car.ownerId.toString() !== ownerId) {
+      return next(createError(403, "You are not authorized to edit this car"));
     }
 
     // Get the uploaded file if it exists
@@ -231,8 +231,8 @@ export const updateProperty = async (req, res, next) => {
       newImageUrl = result.secure_url;
     } 
 
-    // Update the property
-    property = await Property.findByIdAndUpdate(id, {
+    // Update the car
+    car = await Car.findByIdAndUpdate(id, {
       title,
       description,
       address,
@@ -246,13 +246,13 @@ export const updateProperty = async (req, res, next) => {
       imageUrl: newImageUrl,
     }, { new: true });
 
-    if (!property) {
-      throw createError(404, 'No property found');
+    if (!car) {
+      throw createError(404, 'No car found');
     }
 
     res.status(200).json({ 
-      message: 'Property updated successfully', 
-      property
+      message: 'Car updated successfully', 
+      car
     });
 
   } catch (error) {
@@ -261,32 +261,32 @@ export const updateProperty = async (req, res, next) => {
   }
 };
 
-// Delete property by ID
-export const deleteProperty = async (req, res, next) => {
+// Delete car by ID
+export const deleteCar = async (req, res, next) => {
 
   try {
-    // Find the property by ID
-    const property = await Property.findById(req.params.id);
+    // Find the car by ID
+    const car = await Car.findById(req.params.id);
 
-    // Check if the property exists
-    if (!property) {
-      return res.status(404).json({ error: 'Property not found!' });
+    // Check if the car exists
+    if (!car) {
+      return res.status(404).json({ error: 'Car not found!' });
     }
 
-    console.log(req.user !== property.ownerId.toString());
+    console.log(req.user !== car.ownerId.toString());
 
-    // Check if the user is authorized to delete the property
-    if (req.user !== property.ownerId.toString()) {
-      return res.status(401).json({ error: 'You can only delete your own properties!' });
+    // Check if the user is authorized to delete the car
+    if (req.user !== car.ownerId.toString()) {
+      return res.status(401).json({ error: 'You can only delete your own cars!' });
     }
 
-    // Delete the property
-    await Property.findByIdAndDelete(req.params.id);
+    // Delete the car
+    await Car.findByIdAndDelete(req.params.id);
 
     // Respond with success message
-    res.status(200).json({ message: 'Property has been deleted!' });
+    res.status(200).json({ message: 'Car has been deleted!' });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: 'Failed to delete property' });
+    res.status(500).json({ error: 'Failed to delete car' });
   }
 };

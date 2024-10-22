@@ -6,7 +6,7 @@ import Layout from "../../Layout/DashLayout";
 // import Profile from '../Profile';
 import MyListing from '../../components/MyListing';
 
-const PropertyList = () => {
+const CarList = () => {
   // const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   // const [selectedMenuItem, setSelectedMenuItem] = useState('');
 
@@ -16,7 +16,7 @@ const PropertyList = () => {
       <div className="container px-5 py-24 mx-auto h-[78vh]">
         <div className="flex flex-col text-center w-full mb-16">
           <strong className="text-secondary sm:text-3xl text-2xl font-bold title-font mb-2">
-            My Properties
+            My Cars
           </strong>
           <p className="lg:w-2/3 mx-auto leading-relaxed text-base">Welcome to your dashboard!</p>
         </div>
@@ -27,4 +27,4 @@ const PropertyList = () => {
   );
 };
 
-export default PropertyList;
+export default CarList;

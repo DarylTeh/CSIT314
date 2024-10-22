@@ -33,16 +33,16 @@ const roleSchema = new mongoose.Schema({
     }
   });
   
-  // Define BuyerPropertySaved schema
-  const buyerPropertySavedSchema = new mongoose.Schema({
+  // Define BuyerCarSaved schema
+  const buyerCarSavedSchema = new mongoose.Schema({
     userId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User',
       required: true
     },
-    propertyId: {
+    carId: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'Property',
+      ref: 'Car',
       required: true
     }
   });
@@ -70,8 +70,8 @@ const roleSchema = new mongoose.Schema({
     }
   });
   
-  // Define Property schema
-  const propertySchema = new mongoose.Schema({
+  // Define Car schema
+  const carSchema = new mongoose.Schema({
     address: {
       type: String,
       required: true
@@ -128,9 +128,9 @@ const roleSchema = new mongoose.Schema({
   
   // Define Note schema
   const noteSchema = new mongoose.Schema({
-    propertyId: {
+    carId: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'Property',
+      ref: 'Car',
       required: true
     },
     description: {
@@ -141,9 +141,9 @@ const roleSchema = new mongoose.Schema({
   
   // Define PriceHistory schema
   const priceHistorySchema = new mongoose.Schema({
-    propertyId: {
+    carId: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'Property'
+      ref: 'Car'
     },
     amount: {
       type: Number,
@@ -196,12 +196,12 @@ const roleSchema = new mongoose.Schema({
   // Create models from the schemas
   export const Role = mongoose.model('Role', roleSchema);
   export const Account = mongoose.model('Account', accountSchema);
-  export const BuyerPropertySaved = mongoose.model('BuyerPropertySaved', buyerPropertySavedSchema);
+  export const BuyerCarSaved = mongoose.model('BuyerCarSaved', buyerCarSavedSchema);
   export const Rating = mongoose.model('Rating', ratingSchema);
-  // const Property = mongoose.model('Property', propertySchema);
+  // const Car = mongoose.model('Car', carSchema);
   export const Note = mongoose.model('Note', noteSchema);
   export const PriceHistory = mongoose.model('PriceHistory', priceHistorySchema);
   export const Contract = mongoose.model('Contract', contractSchema);
   export const Transaction = mongoose.model('Transaction', transactionSchema);
   
-  // module.exports = { Role, Account, BuyerPropertySaved, Rating, Property, Note, PriceHistory, Contract, Transaction };
+  // module.exports = { Role, Account, BuyerCarSaved, Rating, Car, Note, PriceHistory, Contract, Transaction };

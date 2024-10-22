@@ -13,7 +13,7 @@ import upload from '../middleware/multer.middleware.js';
 
 const router = express.Router();
 
-router.get('/:propertyId', getNotes);
+router.get('/:carId', getNotes);
 router.post('/add', addNote);
 router.put('/:id', updateNote);
 router.delete('/delete/:id', deleteNote);
