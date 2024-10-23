@@ -25,7 +25,7 @@ const menuItems = {
     { name: "My Cars", icon: <SlHome/>, link: "/my-listing" },
     { name: "My Favorites", icon: <SlHeart/>, link: "/fav-listing" },
     { name: "Reviews", icon: <SlBubble/>, link: "/dashboard" },
-    { name: "Mortgage Calculator", icon: <GiCalculator />, link: "/mortgage-calculator" }
+    { name: "Loan Calculator", icon: <GiCalculator />, link: "/loan-calculator" }
   ],
   // manageAccount: [
   //   { name: "Profile", icon: <SlUser/>, link: "/profile" },

@@ -91,7 +91,7 @@ export default function App() {
             <Route path="/edit-car/:carId" element={<EditCar />}/>
             <Route path="/my-listing" element={<CarList />}/>
             <Route path="/fav-listing" element={<FavDashboard />} /> 
-            <Route path="/mortgage-calculator" element={<Calculator />} />
+            <Route path="/loan-calculator" element={<Calculator />} />
           </Route>
           <Route path="*" element={<ErrorPage/>} />
       </Routes>

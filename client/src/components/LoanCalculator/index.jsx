@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import './MortgageCalculator.css';
+import './LoanCalculator.css';
 
-const MortgageCalculator = () => {
+const LoanCalculator = () => {
   const [loanAmount, setLoanAmount] = useState('');
   const [interestRate, setInterestRate] = useState('');
   const [loanTerm, setLoanTerm] = useState('');
@@ -33,7 +33,7 @@ const MortgageCalculator = () => {
 
   return (
     <div className="calculator-container">
-      <h2>Mortgage Calculator</h2>
+      <h2>Loan Calculator</h2>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label>
@@ -88,4 +88,4 @@ const MortgageCalculator = () => {
   );
 };
 
-export default MortgageCalculator;
+export default LoanCalculator;

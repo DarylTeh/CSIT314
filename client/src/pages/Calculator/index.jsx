@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Layout from "../../Layout/DashLayout";
-import MortgageCalculator from '../../components/MortgageCalculator';
+import LoanCalculator from '../../components/LoanCalculator';
 
 const Calculator = () => {
 
@@ -8,7 +8,7 @@ const Calculator = () => {
     <Layout>
       <section className="text-gray-600 body-font">
         <div className="container px-5 py-24 mx-auto h-[79vh]">
-          <MortgageCalculator />
+          <LoanCalculator />
         </div>
       </section>
     </Layout>
