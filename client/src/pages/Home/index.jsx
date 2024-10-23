@@ -48,7 +48,10 @@ export default function Home() {
     <Layout>
       <section className="text-gray-600 body-font">
         <div className={`w-full h-[90vh] flex justify-center items-center bg-center bg-cover bg-no-repeat bg-gray-100`} 
-        style={{backgroundImage: `url(${bgImg})`}}>
+        style={{
+          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${bgImg})`,
+          backgroundBlendMode: 'darken',
+        }}>
           <div className="flex flex-col justify-center items-start py-4 mt-16 w-1/2">
             <div className="hero-title">
               <h1 className="text-2xl md:text-3xl lg:text-4xl font-semibold lg:font-bold text-gray-200">

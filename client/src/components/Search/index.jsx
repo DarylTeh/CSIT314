@@ -65,10 +65,10 @@ export default function Search({ setSearchTerm, setOtherTerm }) {
           </div>
         </button>
       </div>
-      <button onClick={toggleFilter}>{addFilter ? "Close Filter" : "Add Filter"}</button>
+      <button class='text-gray-200' style={{ paddingBottom: '20px' }} onClick={toggleFilter}>{addFilter ? "Close Filter" : "Add Filter"}</button>
       {
         addFilter ? 
-        <div>
+        <div className='text-gray-200'>
             <div className='grid grid-cols-2 gap-4'>
             <div>
               <label>
