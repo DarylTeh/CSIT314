@@ -1,7 +1,7 @@
 {
   "name": "Assignment 1",
   "version": "1.0.0",
-  "description": "A dynamic 2nd hand car listing market, For 2nd hand car listing advertisements and rental of apartments and houses",
+  "description": "A dynamic 2nd hand car listing market",
   "private": "true",
   "workspaces": [
     "api",
