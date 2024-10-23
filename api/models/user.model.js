@@ -17,11 +17,11 @@ const userSchema = new Schema({
   refreshToken: { type: String, required: false }, // Store the refresh token
   avatar: { type: String, required: false },
   newPassword: { type: String, required: false },
-  biography: { type: String, required: false}, // because by right Agent need to have biography, but optional for other roles
+  biography: { type: String, required: false}, // because by right Admin need to have biography, but optional for other roles
   role: {
     type: String,
     required: true,
-    enum: ["2nd hand car listing Agent", "Seller", "Buyer", "Admin"],
+    enum: ["2nd hand car listing Admin", "Seller", "Buyer", "Admin"],
     //default: "Buyer" //For now set Buyer as default for testing purpose 
     // TODO: add UI to select role.
   }

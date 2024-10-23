@@ -69,63 +69,7 @@ const roleSchema = new mongoose.Schema({
       default: Date.now
     }
   });
-  
-  // Define Car schema
-  const carSchema = new mongoose.Schema({
-    address: {
-      type: String,
-      required: true
-    },
-    image: {
-      type: Buffer
-    },
-    document: {
-      type: Buffer
-    },
-    status: {
-      type: String,
-      required: true
-    },
-    price: {
-      type: Number,
-      required: true
-    },
-    no_of_bedrooms: {
-      type: Number,
-      required: true
-    },
-    type: {
-      type: String,
-      required: true
-    },
-    tag: String,
-    viewCount: {
-      type: Number,
-      default: 0
-    },
-    createdBy: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Account'
-    },
-    updatedBy: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Account'
-    },
-    purchasedBy: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Account'
-    },
-    createdDt: {
-      type: Date,
-      default: Date.now
-    },
-    updatedDt: {
-      type: Date,
-      default: Date.now
-    },
-    purchasedDt: Date
-  });
-  
+    
   // Define Note schema
   const noteSchema = new mongoose.Schema({
     carId: {
@@ -161,7 +105,7 @@ const roleSchema = new mongoose.Schema({
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Account'
     },
-    agentId: {
+    buyerId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Account'
     },
@@ -198,7 +142,7 @@ const roleSchema = new mongoose.Schema({
   export const Account = mongoose.model('Account', accountSchema);
   export const BuyerCarSaved = mongoose.model('BuyerCarSaved', buyerCarSavedSchema);
   export const Rating = mongoose.model('Rating', ratingSchema);
-  // const Car = mongoose.model('Car', carSchema);
+  //export const Car = mongoose.model('Car', carSchema);
   export const Note = mongoose.model('Note', noteSchema);
   export const PriceHistory = mongoose.model('PriceHistory', priceHistorySchema);
   export const Contract = mongoose.model('Contract', contractSchema);

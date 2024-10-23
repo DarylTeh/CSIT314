@@ -27,7 +27,7 @@ export default function Footer() {
                 <a className="text-gray-600 hover:text-gray-800">Home</a>
               </li>
               <li>
-                <a className="text-gray-600 hover:text-gray-800">Agents</a>
+                <a className="text-gray-600 hover:text-gray-800">Admins</a>
               </li>
               <li>
                 <a className="text-gray-600 hover:text-gray-800">About Us</a>
