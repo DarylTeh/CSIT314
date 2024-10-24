@@ -1,4 +1,4 @@
-import User, { userSignUpValidation } from '../models/user.model.js';
+import User, { UserSignUpValidation } from '../models/user.model.js';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import createError from '../helpers/createError.js';
