@@ -29,4 +29,5 @@ CarSchema.virtual('id').get(function () {
 });
 CarSchema.set('toJSON', { virtuals: true });
 
-export default mongoose.model('Car', CarSchema);
+// Instead of 'const Car = mongoose.model'
+export default mongoose.models.Car || mongoose.model('Car', CarSchema);

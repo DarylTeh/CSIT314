@@ -17,12 +17,12 @@ const userSchema = new Schema({
   refreshToken: { type: String, required: false }, // Store the refresh token
   avatar: { type: String, required: false },
   newPassword: { type: String, required: false },
-  biography: { type: String, required: false}, // because by right Admin need to have biography, but optional for other roles
+  biography: { type: String, required: false }, // because by right Admin need to have biography, but optional for other roles
   role: {
     type: String,
     required: true,
     enum: ["2nd hand car listing Admin", "Seller", "Buyer", "Admin"],
-    //default: "Buyer" //For now set Buyer as default for testing purpose 
+    // default: "Buyer" // For now set Buyer as default for testing purpose
     // TODO: add UI to select role.
   }
 }, { timestamps: true });
@@ -34,22 +34,21 @@ const userSignUpValidation = Joi.object({
   phone: Joi.number().optional().integer().positive(),
   password: Joi.string().required().min(MIN_PASSWORD_LENGTH).max(MAX_PASSWORD_LENGTH),
   confirmPassword: Joi.string().required().min(MIN_PASSWORD_LENGTH).max(MAX_PASSWORD_LENGTH),
-  role: Joi.string().required()
-})
+  role: Joi.string().required(),
+});
 
 // Joi schema for user update details
 const userUpdateDetailsValidation = Joi.object({
   username: Joi.string().required().min(MIN_NAME_LENGTH).max(MAX_NAME_LENGTH).alphanum(),
   email: Joi.string().required().email(),
   phone: Joi.number().optional().integer().positive(),
-})
+});
 
 // Joi schema for user change password validation
 const userChangePasswordValidation = Joi.object({
   password: Joi.string().required().min(MIN_PASSWORD_LENGTH).max(MAX_PASSWORD_LENGTH),
   newPassword: Joi.string().required().min(MIN_PASSWORD_LENGTH).max(MAX_PASSWORD_LENGTH),
 });
-
 
 // Hash the user's password before saving it
 userSchema.pre('save', async function (next) {
@@ -61,15 +60,12 @@ userSchema.pre('save', async function (next) {
   next();
 });
 
-
-
 // Adding virtual id for frontend friendliness
-userSchema.virtual('id').get(function() {
+userSchema.virtual('id').get(function () {
   return this._id.toHexString();
-})
+});
 userSchema.set('toJSON', { virtuals: true });
 
-export default mongoose.model('User', userSchema);
-export { userSignUpValidation };
-export { userUpdateDetailsValidation };
-export { userChangePasswordValidation };
+// Use mongoose.models to prevent overwriting the model if it already exists
+export default mongoose.models.User || mongoose.model('User', userSchema);
+export { userSignUpValidation, userUpdateDetailsValidation, userChangePasswordValidation };
